@@ -45,7 +45,7 @@ Node* readList(const char* filename)
 
 void print(Node* head)
 {
-    while(head) {
+    while(head != NULL) {
         cout << head->val << " ";
         head = head->next;
     }
@@ -55,7 +55,7 @@ void print(Node* head)
 void dealloc(Node* head)
 {
     Node* temp;
-    while(head) {
+    while(head != NULL) {
         temp = head->next;
         delete head;
         head = temp;
@@ -86,10 +86,22 @@ int main(int argc, char* argv[])
     print(head);
 
     // Test out your linked list code
+    Node* smaller;
+    Node* larger;
+    int pivot = 10;
 
+    llpivot(head, smaller, larger, pivot);
 
+    cout << "Sorted list (Pivot: 2): " << endl;
+    //cout << "Smaller: "; print(smaller);
+    cout << "Larger: "; print(larger);
+    cout << "Smaller: "; print(smaller);
+
+    dealloc(larger);  
+    dealloc(smaller);  
 
     
+
     return 0;
 
 }

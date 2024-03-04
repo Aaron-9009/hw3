@@ -9,9 +9,21 @@
 class Gate 
 {
     public:
+        /***************
+        *@param int number of inputs
+        *
+        *@param Wire output
+        ****************/
         Gate(int, Wire*);
         virtual ~Gate();
+
         virtual Event* update(uint64_t) =0;
+
+        /***************
+        *@param int id number
+        *
+        *@param Wire input wire
+        ****************/
         void wireInput(unsigned int,Wire*);
         
     protected:
@@ -33,6 +45,13 @@ class Or2Gate : public Gate
   public:
       Or2Gate(Wire*, Wire*, Wire*);
       Event* update(uint64_t);
+};
+
+class NotGate : public Gate
+{
+  public: 
+    NotGate(Wire*, Wire*);
+    Event* update(uint64_t);
 };
 
 #endif
